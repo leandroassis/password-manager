@@ -11,7 +11,9 @@
 
 #include <stdio.h>
 #include <opencryptoki/pkcs11.h>
+#include <stdlib.h>
 #include <errno.h>
+#include <string.h>
 
 #include "console_parser.h"
 #include "types.h"
@@ -26,7 +28,7 @@ int main(int argc, char **argv){
 
     if(argc == 1) CONSOLE_ON = true;
     
-    nRet = ParseConsoleCall(argc, argv, &CONSOLE_ON, &AUTO_CONFIRM, &keyname, &username, &keysize, &oper);
+    nRet = ParseConsoleCall(argc, argv, &CONSOLE_ON, &AUTO_CONFIRM, keyname, username, &keysize, &oper);
     if(nRet != 0){
         printf("An error %d ocurred during ParseConsoleCall execution.\n", nRet);
         exit(nRet);

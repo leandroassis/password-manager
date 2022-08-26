@@ -16,8 +16,8 @@ rTypes ParseConsoleCall(int argc,                     \
                         char **argv,                  \
                         bool *en_console,             \
                         bool *confirm,                \
-                        char *passwordname,          \
-                        char *username,              \    
+                        char *passwordname,           \
+                        char *username,               \    
                         unsigned short *passwordsize, \
                         op *operation);
 

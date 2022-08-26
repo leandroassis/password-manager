@@ -42,17 +42,17 @@ rTypes ParseConsoleCall(int argc,                     \
     int opt;
     const struct option longopts[] = {
         {"help", no_argument, 0, 'h'},
-        {"console", no_argument, en_console, true},
+        {"console", no_argument, (int *) en_console, true},
         {"name", required_argument, 0, 'n'},
         {"login", required_argument, 0, 'l'},
         {"size", required_argument, 0, 's'},
-        {"create", no_argument, operation, ADD},
-        {"get", no_argument, operation, GET},
-        {"remove", no_argument, operation, REMOVE},
-        {"modify", no_argument, operation, MODIFY},
-        {"yes-to-all", no_argument, confirm, true},
-        {"change-pin", no_argument, operation, CHANGE_PIN},
-        {"initialize", no_argument, operation, INIT_TOKEN},
+        {"create", no_argument, (int *) operation, ADD},
+        {"get", no_argument, (int *) operation, GET},
+        {"remove", no_argument, (int *) operation, REMOVE},
+        {"modify", no_argument, (int *) operation, MODIFY},
+        {"yes-to-all", no_argument, (int *) confirm, true},
+        {"change-pin", no_argument, (int *) operation, CHANGE_PIN},
+        {"initialize", no_argument, (int *) operation, INIT_TOKEN},
         {0, 0, 0, 0}
     };
 
@@ -126,17 +126,17 @@ void UsageCommand(void){
  */
 void HelpCommand(void){
    printf("Usage: ./password-manager <options>\n\
-           -h, --help           show help and quit.\n\
-           -C, --console        execute the console interface.\n\
-           -c, --create         create new password.\n\
-           -g, --get            get a password.\n\
-           -r, --remove         remove a password.\n\
-           -m, --modify         change a password.\n\
-           -p, --change-pin     change token PIN.\n\
-           -i, --initialize     initialize the token.\n\
-           -n, --name=NAME      sets NAME as password's name for operations (-g, -r, -m, -c).\n\
-           -l, --login=LOGIN    sets LOGIN as login for open a session.\n\
-           -s, --size=SIZE      sets SIZE as password's size for --create.\n\
-           -y, --yes-to-all     enable auto confirmation.\n");
+           -h, --help                 show help and quit.\n\
+           -C, --console              execute the console interface.\n\
+           -c, --create               create new password.\n\
+           -g, --get                  get a password.\n\
+           -r, --remove               remove a password.\n\
+           -m, --modify               change a password.\n\
+           -p, --change-pin           change token PIN.\n\
+           -i, --initialize           initialize the token.\n\
+           -n NAME, --name=NAME       sets NAME as password's name for operations (-g, -r, -m, -c).\n\
+           -l LOGIN, --login=LOGIN    sets LOGIN as login for open a session.\n\
+           -s SIZE, --size=SIZE       sets SIZE as password's size for --create.\n\
+           -y, --yes-to-all           enable auto confirmation.\n");
 }
 
