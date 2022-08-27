@@ -18,7 +18,7 @@
 #include "types.h"
 #include "console_parser.h"
 
-/*!
+/**
  * @brief Function to read the short option command
  * @param[in] argc number of arguments received by program
  * @param[in] argv all arguments received by program

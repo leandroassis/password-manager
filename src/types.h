@@ -27,13 +27,13 @@
     } rTypes;
 
     typedef enum{
-        true,
-        false
+        true = 1,
+        false = 0
     } bool;
 
     /**
      * @enum
-     * 
+     * @brief
      * 
      */
     typedef enum{
