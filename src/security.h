@@ -10,3 +10,7 @@
  */
 
 #include "types.h"
+
+
+
+rTypes LogIn(char *username, char *password);

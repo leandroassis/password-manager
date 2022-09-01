@@ -16,6 +16,8 @@ CC_FLAGS=-c \
 		 -W \
 		 -Wall \
 		 -lopencryptoki \
+		 -lssl \
+		 -lcrypto \
 		 -ldl \
 		 -I $(INCLUDE_PATH)
 

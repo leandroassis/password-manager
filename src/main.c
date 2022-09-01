@@ -11,12 +11,23 @@
 
 #include <stdio.h>
 #include <opencryptoki/pkcs11.h>
+#include <openssl/rsa.h>
 #include <stdlib.h>
 #include <errno.h>
 #include <string.h>
+#include <signal.h>
 
 #include "console_parser.h"
 #include "types.h"
+
+void sigint_handler(int signum){
+    signal(SIGINT, sigint_handler);
+    printf("Encerrando o programa.\n");
+    fflush(stdout);
+    // destroi chaves
+    // limpa memoria
+    // sai
+}
 
 int main(int argc, char **argv){
     
@@ -53,10 +64,18 @@ int main(int argc, char **argv){
                 switch(opt){
                     case 'a':
                         nRet = LogIn(&username, &user_password);
+                        if(nRet){
+                            printf("Error: LogIn fuction returned %d", nRet);
+                            exit(nRet);
+                        }
                         //goto task;
                         break;
                     case 'b':
-                        nRet = CreateNewUser();
+                        nRet = CreateNewUser(&username);
+                        if(nRet){
+                            printf("Error: CreateNewUser fuction returned %d", nRet);
+                            exit(nRet);
+                        }
                         break;
                     default:
                         prinf("Error: Not a valid option.\n");
@@ -66,6 +85,10 @@ int main(int argc, char **argv){
             }
             else{
                 nRet = LogIn(&username, &user_password);
+                if(nRet){
+                            printf("Error: LogIn fuction returned %d", nRet);
+                            exit(nRet);
+                }
                 //goto task;
             }        
     }
